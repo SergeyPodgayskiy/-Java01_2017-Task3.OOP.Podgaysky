@@ -8,7 +8,6 @@ import java.io.Serializable;
  * Created by serge on 31.03.2017.
  */
 public class CaramelWithFilling extends Caramel implements Serializable {
-    //TODO: serialVersion
     private String filling;
 
     public CaramelWithFilling() {
