@@ -54,6 +54,11 @@ public class DOMGiftParser {
             }
         }
     }
+    
+    
+    public ArrayList<Candy> getGift() {
+        return gift;
+    }
 
     private Lollipop getLollipop(Element element) {
         Lollipop lollipop = new Lollipop();
@@ -118,9 +123,5 @@ public class DOMGiftParser {
                 getElementsByTagName("kilocalories").item(0).getTextContent())));
         candy.setSugar(Double.parseDouble(element.
                 getElementsByTagName("sugar").item(0).getTextContent()));
-    }
-
-    public ArrayList<Candy> getGift() {
-        return gift;
     }
 }
