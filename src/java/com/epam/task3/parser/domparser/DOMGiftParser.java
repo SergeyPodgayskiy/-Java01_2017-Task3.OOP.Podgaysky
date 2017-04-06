@@ -1,10 +1,7 @@
 package com.epam.task3.parser.domparser;
 
 import com.epam.task3.bean.Candy;
-import com.epam.task3.bean.entity.CaramelWithFilling;
-import com.epam.task3.bean.entity.ChocoFillingCandy;
-import com.epam.task3.bean.entity.ChocoNutsCandy;
-import com.epam.task3.bean.entity.Lollipop;
+import com.epam.task3.bean.entity.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -22,41 +19,55 @@ import java.util.ArrayList;
  */
 public class DOMGiftParser {
     private static final String XML_PATH = "src/resources/christmasGift.xml";
-    private ArrayList<Candy> gift;
+    private ArrayList<Candy> candyArrayList;
     private Candy candy;
 
-    public void parseFile() throws ParserConfigurationException, IOException, SAXException {
+    public void parseFile() {
         DocumentBuilderFactory document = DocumentBuilderFactory.newInstance();
-        DocumentBuilder documentBuilder = document.newDocumentBuilder();
-        Document doc = documentBuilder.parse(new File(XML_PATH));
-        NodeList nodeList = doc.getElementsByTagName("candy");
-        String type;
-        gift = new ArrayList<>();
+        DocumentBuilder documentBuilder = null;
+        try {
+            documentBuilder = document.newDocumentBuilder();
+            Document doc = null;
+            doc = documentBuilder.parse(new File(XML_PATH));
+            NodeList nodeList = doc.getElementsByTagName("candy");
+            String type;
 
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            Element element = (Element) nodeList.item(i);
-            type = element.getElementsByTagName("type").item(0).getTextContent();
-            if (type.equals("lollipop")) {
-                candy = getLollipop(element);
-                gift.add(candy);
+            candyArrayList = new ArrayList<>();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element element = (Element) nodeList.item(i);
+                type = element.getElementsByTagName("type").item(0).getTextContent();
+                if (type.equals("lollipop")) {
+                    candy = getLollipop(element);
+                    candyArrayList.add(candy);
+                }
+                if (type.equals("caramelWithFilling")) {
+                    candy = getCaramelWithFilling(element);
+                    candyArrayList.add(candy);
+                }
+                if (type.equals("chocoFillingCandy")) {
+                    candy = getChocoFillingCandy(element);
+                    candyArrayList.add(candy);
+                }
+                if (type.equals("chocoNutsCandy")) {
+                    candy = getChocoNutsCandy(element);
+                    candyArrayList.add(candy);
+                }
             }
-            if (type.equals("caramelWithFilling")) {
-                candy = getCaramelWithFilling(element);
-                gift.add(candy);
-            }
-            if (type.equals("chocoFillingCandy")) {
-                candy = getChocoFillingCandy(element);
-                gift.add(candy);
-            }
-            if (type.equals("chocoNutsCandy")) {
-                candy = getChocoNutsCandy(element);
-                gift.add(candy);
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
         }
     }
 
-    public ArrayList<Candy> getGift() {
-        return gift;
+    public ArrayList<Candy> getCandyArrayList() {
+        return candyArrayList;
+    }
+
+    public void setCandyArrayList(ArrayList<Candy> candyArrayList) {
+        this.candyArrayList = candyArrayList;
     }
 
     private Lollipop getLollipop(Element element) {
