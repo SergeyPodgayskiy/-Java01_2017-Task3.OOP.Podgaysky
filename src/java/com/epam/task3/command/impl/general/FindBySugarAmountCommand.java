@@ -32,10 +32,11 @@ public class FindBySugarAmountCommand implements Command {
                     }
                 }
             }
+            return gift;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return selectedCandies;
+        return null;
     }
 
     private boolean isValidParams(String[] request, double low, double high) {

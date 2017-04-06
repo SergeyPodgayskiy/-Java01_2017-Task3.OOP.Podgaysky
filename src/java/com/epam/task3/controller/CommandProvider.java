@@ -29,7 +29,7 @@ public class CommandProvider {
                 new SortByParameterCommand());
     }
 
-    public static CommandProvider getInstance(){ //TODO: Singleton посмотреть
+    public static CommandProvider getInstance(){
         return INSTANCE;
     }
 

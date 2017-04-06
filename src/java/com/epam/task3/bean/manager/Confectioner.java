@@ -4,19 +4,18 @@ import com.epam.task3.bean.Candy;
 import com.epam.task3.controller.Controller;
 import org.apache.log4j.Logger;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by serge on 31.03.2017.
  */
-public class Confectioner implements Serializable, CandyOperations {
+public class Confectioner implements CandyOperation {//TODO Переименовать класс и вынести в пакет логики
     private static final Logger LOGGER = Logger.getLogger(Confectioner.class);
-    private String name;
+    private String name; // TODO Убарть эти поля
     private String surname;
     private short age;
-    private Controller controller;
-    private ArrayList<Candy> gift;
+    private Controller controller; //TODO Не должно быть так
+    private ArrayList<Candy> gift; //TODO Создать класс гифт
 
     public Confectioner() {
         controller = new Controller();
@@ -61,14 +60,12 @@ public class Confectioner implements Serializable, CandyOperations {
     }
 
     @Override
-    public void findBySugarAmount(double low, double high) {
+    public ArrayList<Candy> findBySugarAmount(double low, double high) { //TODO Убрать комманды, сделать обычный один класс логики
+        ArrayList<Candy> selectedCandies = null;
         if (isGiftCollected()) {
-            ArrayList<Candy> selectedCandies =
-                    controller.executeCommand("find_candy_by_amount_of_sugar " + low + " " + high);
-            for (Candy candy : selectedCandies) {
-                System.out.println(candy.toString());
-            }
+            selectedCandies =  controller.executeCommand("find_candy_by_amount_of_sugar " + low + " " + high);
         }
+        return selectedCandies;
     }
 
     @Override

@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class SortByParameterCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(SortByParameterCommand.class);
+
     @Override
     public ArrayList<Candy> execute(String request) {
         DOMGiftParser domGiftParser = new DOMGiftParser();
@@ -57,10 +58,11 @@ public class SortByParameterCommand implements Command {
                         System.err.println("Incorrect parameter of sorting");
                 }
             }
+            return gift;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return gift;
+        return null;
     }
 
     private boolean isValidParams(String[] param) {

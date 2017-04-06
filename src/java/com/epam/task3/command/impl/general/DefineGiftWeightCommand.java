@@ -14,16 +14,17 @@ public class DefineGiftWeightCommand implements Command {
     public Double execute(String request) {
         DOMGiftParser domGiftParser = new DOMGiftParser();
         ArrayList<Candy> gift = null;
-        double weight = 0.0;
         try {
+            double weight = 0.0;
             domGiftParser.parseFile();
             gift = domGiftParser.getGift();
             for (Candy candy : gift) {
                 weight += candy.getWeight();
             }
+            return weight;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return weight;
+        return null;
     }
 }

@@ -20,6 +20,7 @@ public class CollectGiftCommand implements Command {
         try {
             domGiftParser.parseFile();
             gift = domGiftParser.getGift();
+            return gift;
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -27,6 +28,6 @@ public class CollectGiftCommand implements Command {
         } catch (SAXException e) {
             e.printStackTrace();
         }
-        return gift;
+        return null;
     }
 }
