@@ -1,13 +1,11 @@
 package com.epam.task3.bean.entity;
 
-import com.epam.task3.bean.candyclassification.ChocolateCandy;
-
-import java.io.Serializable;
+import com.epam.task3.bean.ChocolateCandy;
 
 /**
  * Created by serge on 31.03.2017.
  */
-public class ChocoNutsCandy extends ChocolateCandy implements Serializable {
+public class ChocoNutsCandy extends ChocolateCandy{
     private String additive;
 
     public ChocoNutsCandy() {

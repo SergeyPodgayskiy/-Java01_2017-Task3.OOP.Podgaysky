@@ -1,14 +1,11 @@
 package com.epam.task3.bean.entity;
 
-import com.epam.task3.bean.candyclassification.Caramel;
-
-import java.io.Serializable;
+import com.epam.task3.bean.Caramel;
 
 /**
  * Created by serge on 31.03.2017.
  */
-public class CaramelWithFilling extends Caramel implements Serializable {
-    //TODO: serialVersion
+public class CaramelWithFilling extends Caramel{
     private String filling;
 
     public CaramelWithFilling() {

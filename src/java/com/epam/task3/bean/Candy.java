@@ -1,9 +1,11 @@
 package com.epam.task3.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by serge on 31.03.2017.
  */
-public abstract class Candy {
+public abstract class Candy implements Serializable{
     private String name;
     private double weight;
     private double carbohydrates;
