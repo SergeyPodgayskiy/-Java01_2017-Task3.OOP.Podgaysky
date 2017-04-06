@@ -5,7 +5,11 @@ import com.epam.task3.bean.Caramel;
 /**
  * Created by serge on 31.03.2017.
  */
+<<<<<<< HEAD
 public class CaramelWithFilling extends Caramel{
+=======
+public class CaramelWithFilling extends Caramel implements Serializable {
+>>>>>>> 4031bc800f62ed977a193dc467d473758a63bd72
     private String filling;
 
     public CaramelWithFilling() {

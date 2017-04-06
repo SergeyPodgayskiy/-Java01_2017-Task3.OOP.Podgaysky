@@ -61,6 +61,11 @@ public class DOMGiftParser {
             e.printStackTrace();
         }
     }
+    
+    
+    public ArrayList<Candy> getGift() {
+        return gift;
+    }
 
     public ArrayList<Candy> getCandyArrayList() {
         return candyArrayList;

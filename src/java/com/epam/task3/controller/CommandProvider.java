@@ -29,7 +29,11 @@ public class CommandProvider {
                 new SortByParameterCommand());
     }
 
+<<<<<<< HEAD
     public static CommandProvider getInstance(){
+=======
+    public static CommandProvider getInstance(){ 
+>>>>>>> 4031bc800f62ed977a193dc467d473758a63bd72
         return INSTANCE;
     }
 
